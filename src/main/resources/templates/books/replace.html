@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Replace Book</title>
+</head>
+<body>
+<h1>Replace Book</h1>
+<form th:object="${book}" th:action="@{/books/replace/{id}(id=${existingBook.id})}" method="post">
+    <label>Title: <input type="text" th:field="*{title}" /></label><br/>
+    <label>Author: <input type="text" th:field="*{author}" /></label><br/>
+    <input type="submit" value="Replace" />
+</form>
+<a href="/books">Back to Book List</a>
+</body>
+</html>

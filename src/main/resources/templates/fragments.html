@@ -10,20 +10,30 @@
 <body class="container">
 <header th:fragment = "header">
 
-</header>
-<nav th:fragment ="navigation">
+</header><nav th:fragment="navigation">
     <ul class="nav">
         <li class="nav-item">
             <a href="/users" class="nav-link">All Users</a>
         </li>
         <li class="nav-item">
-            <a href = "/users/create" class="nav-link">Create User</a>
+            <a href="/users/create" class="nav-link">Create User</a>
         </li>
         <li class="nav-item">
-            <a href = "/users/delete" class="nav-link">Delete User</a>
+            <a href="/users/delete" class="nav-link">Delete User</a>
+        </li>
+        <li class="nav-item">
+            <a href="/books" class="nav-link">All Books</a>
+        </li>
+        <li class="nav-item">
+            <a href="/books/create" class="nav-link">Create Book</a>
+        </li>
+        <li class="nav-item">
+            <a href="/books/delete" class="nav-link">Delete Book</a>
         </li>
     </ul>
 </nav>
+
+
 
 </body>
 </html>

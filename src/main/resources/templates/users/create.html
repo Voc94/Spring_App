@@ -20,16 +20,6 @@
         </label>
     </div>
     <div class="form-group">
-        <label>Type
-            <select th:field="${user.type}">
-                <option th:each="type : ${types}"
-                        th:value="${type}"
-                        th:text="${type.displayName}"
-                ></option>
-            </select>
-        </label>
-    </div>
-    <div class="form-group">
         <input type="submit" value="Create User" class="btn btn-success">
     </div>
 </form>

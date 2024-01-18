@@ -2,16 +2,19 @@ package com.example.Final.models;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
 
 import javax.annotation.processing.Generated;
 import java.util.Objects;
-
-public class AbstractEntity {
+@Getter
+@MappedSuperclass
+public abstract class AbstractEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    public int getId() {
+    public int getId(){
         return id;
     }
     @Override
