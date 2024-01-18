@@ -1,61 +1,47 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.NaturalId;
-
-import java.time.LocalDate;
-import java.util.*;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Entity
-@Table(name = "USERS")
 public class User {
+private int id;
+private static int nextId = 1;
+private String username;
+private String password;
+private UserRole role;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    public User(int id, String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+    public User(){
+        this.id = nextId;
+        nextId++;
+    }
 
-    @NonNull
-    @Column(unique = true)
-    private String username;
+    public int getId() {
+        return id;
+    }
 
-    @NonNull
-    private String password;
+    public String getUsername() {
+        return username;
+    }
 
-    @Singular
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "users_roles",
-            joinColumns = {
-                    @JoinColumn(name = "USERS_ID",
-                            referencedColumnName = "ID")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "ROLES_ID",
-                            referencedColumnName = "ID")})
-    private List<Role> roles;
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-    @Builder.Default
-    private Boolean accountNonExpired = true;
+    public String getPassword() {
+        return password;
+    }
 
-    @Builder.Default
-    private Boolean accountNonLocked = true;
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-    @Builder.Default
-    private Boolean credentialsNonExpired = true;
+    public UserRole getRole() {
+        return role;
+    }
 
-    @Builder.Default
-    private Boolean enabled = true;
-
-    private String firstName;
-
-    private String lastName;
-
-    @NaturalId(mutable = true)
-    private String emailAddress;
-
-    private LocalDate birthdate;
-
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
 }

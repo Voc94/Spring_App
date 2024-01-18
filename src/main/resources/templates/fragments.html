@@ -1,54 +1,29 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
-    <meta charset="UTF-8">
-    <link th:href="@{/css/styles.css}" rel="stylesheet" />
-    <title th:text="${title}">Title</title>
+    <meta charset="UTF-8"/>
+    <title>User Library</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
+<body class="container">
+<header th:fragment = "header">
 
-<div class="header" th:fragment="header">
-    <p><a href="/login"><span sec:authorize="!isAuthenticated()">Login</span></a>
-        <a href="/register"><span sec:authorize="!isAuthenticated()">Register</span></a>
-        <a class="header" href="/logout"><span sec:authorize="isAuthenticated()">Logout</span></a>
-        <a class="header" href="/"><span sec:authorize="isAuthenticated()">Home</span></a>
-        <a class="header" href="/users"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Users</span></a>
-        <a class="header" href="/user"><span sec:authorize="isAuthenticated() and hasAuthority('USER')">User</span></a>
-        <a class="header" href="/roles"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Roles</span></a></p>
-        <a class="header" href="/admin"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Admin</span></a></p>
-    <p></p>
-</div>
+</header>
+<nav th:fragment ="navigation">
+    <ul class="nav">
+        <li class="nav-item">
+            <a href="/users" class="nav-link">All Users</a>
+        </li>
+        <li class="nav-item">
+            <a href = "/users/create" class="nav-link">Create User</a>
+        </li>
+        <li class="nav-item">
+            <a href = "/users/delete" class="nav-link">Delete User</a>
+        </li>
+    </ul>
+</nav>
 
-<div th:fragment="roles_table">
-    <table>
-        <tr>
-            <th>Authority</th>
-        </tr>
-        <tr th:each="role : ${roles}">
-            <td th:text="${role.role}"></td>
-        </tr>
-    </table>
-</div>
-
-<div th:fragment="users_table">
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>E-mail address</th>
-        </tr>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.firstName}"></td>
-            <td th:text="${user.lastName}"></td>
-            <td th:text="${user.emailAddress}"></td>
-        </tr>
-    </table>
-</div>
-<div th:fragment="footer">
-    <div class="footer"><p class="footer">Inginerie Software 2024</p></div>
-</div>
+</body>
 </html>
